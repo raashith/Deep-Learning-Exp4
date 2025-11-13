@@ -1,16 +1,19 @@
-# Implement a Transfer Learning concept in Image Classification
+# Deep-Learning-Exp4
 
-## AIM
+**Implement a Transfer Learning concept in Image Classification**
+
+**AIM**
+
 To develop an image classification model using transfer learning with VGG19 architecture for the given dataset.
 
-## THEORY
+**THEORY**
 
 Neural Network Model
 
-<img width="1035" height="373" alt="image" src="https://github.com/user-attachments/assets/9ac9a25c-1c1e-4f1a-b7ef-2d95a203bb34" />
+<img width="814" height="324" alt="image" src="https://github.com/user-attachments/assets/3b5ab9d2-6624-407a-81e8-d1a3bab7aa8f" />
 
 
-## DESIGN STEPS
+**DESIGN STEPS**
 
 STEP 1: We begin by importing the necessary Python libraries, including TensorFlow for deep learning, data preprocessing tools, and visualization libraries.
 
@@ -18,7 +21,7 @@ STEP 2: To leverage the power of GPU acceleration, we configure TensorFlow to al
 
 STEP 3: We load the dataset, consisting of cell images, and check their dimensions. Understanding the image dimensions is crucial for setting up the neural network architecture.
 
-STEP 4: We create an image generator that performs data augmentation, including rotation, shifting, rescaling, and flipping. Data augmentation enhances the model's ability to generalize and recognize malaria-infected cells in various orientations and conditions. 
+STEP 4: We create an image generator that performs data augmentation, including rotation, shifting, rescaling, and flipping. Data augmentation enhances the model's ability to generalize and recognize malaria-infected cells in various orientations and conditions.
 
 STEP 5: We design a convolutional neural network (CNN) architecture consisting of convolutional layers, max-pooling layers, and fully connected layers. The model is compiled with appropriate loss and optimization functions.
 
@@ -30,12 +33,14 @@ STEP 8: We evaluate the trained model's performance using the testing data, gene
 
 STEP 9: We demonstrate the model's practical use by randomly selecting and testing a new cell image for classification.
 
-## PROGRAM
+**PROGRAM**
 
-### Name: RAASHITH RUHULLA R
-### Register Number: 2305002018
+**Name: RAASHITH RUHULLA R**
 
-``` python
+**Register Number:2305002018**
+
+**PROGRAM**
+```python
 import tensorflow as tf
 from tensorflow.compat.v1.keras.backend import set_session
 config = tf.compat.v1.ConfigProto()
@@ -87,11 +92,9 @@ sns.jointplot(x=dim1,y=dim2)
 image_shape = (130,130,3)
 # help(ImageDataGenerator)
 
-image_gen = ImageDataGenerator(rotation_range=20, # rotate the image 20 degrees
-                               width_shift_range=0.10, # Shift the pic width by a max of 5%
-                               height_shift_range=0.10, # Shift the pic height by a max of 5%
-                               rescale=1/255, # Rescale the image by normalzing it.
-                               shear_range=0.1, # Shear means cutting away part of the image (max 10%)
+image_gen = ImageDataGenerator(rotation_range=20, # rotate the image 20 degreeswidth_shift_range=0.10, # Shift the pic width by a max of 5% height_shift_range=0.10,
+                               # Shift the pic height by a max of 5 % rescale=1/255, # Rescale the image by normalzing it.
+                                shear_range=0.1, # Shear means cutting away part of the image (max 10%)
                                zoom_range=0.1, # Zoom in by 10% max
                                horizontal_flip=True, # Allo horizontal flipping
                                fill_mode='nearest' # Fill in missing pixels with the nearest filled value
@@ -170,38 +173,31 @@ plt.title("Model prediction: "+("Parasitized" if pred  else "Un Infected")
 plt.axis("off")
 plt.imshow(img)
 plt.show()
+
+
 ```
 
+**OUTPUT**
 
-# Load Pretrained Model and Modify for Transfer Learning
+**Training Loss, Validation Loss Vs Iteration Plot**
 
-# Modify the final fully connected layer to match the dataset classes
-
-# Include the Loss function and optimizer
-
-*# Train the model
-
-## OUTPUT
-
-Training Loss, Validation Loss Vs Iteration Plot
-
-<img width="468" height="329" alt="image" src="https://github.com/user-attachments/assets/d88ef599-256d-4f73-9201-086ec1059420" />
+<img width="855" height="537" alt="image" src="https://github.com/user-attachments/assets/dd94a949-3b22-407b-a6d9-774ab562f124" />
 
 
-## Confusion Matrix
+**Confusion Matrix**
 
-<img width="337" height="90" alt="image" src="https://github.com/user-attachments/assets/d0d0744d-a953-4797-86dd-26e5222ec93f" />
+<img width="610" height="146" alt="image" src="https://github.com/user-attachments/assets/d4a8dcb7-bb3a-468d-b680-8877f3cc64b6" />
+
+**Classification Report**
+
+<img width="625" height="499" alt="image" src="https://github.com/user-attachments/assets/93517994-3563-4ce8-963e-e6d3bdde9489" />
 
 
-## Classification Report
+**New Sample Data Prediction**
 
-<img width="468" height="329" alt="image" src="https://github.com/user-attachments/assets/d88ef599-256d-4f73-9201-086ec1059420" />
+<img width="648" height="151" alt="image" src="https://github.com/user-attachments/assets/f5d873ec-a961-4d89-bd31-27c4ad36acf8" />
+<img width="633" height="630" alt="image" src="https://github.com/user-attachments/assets/d23b22ea-c847-4f78-9621-444ce4a4ee42" />
 
-
-## New Sample Data Prediction
-
-<img width="683" height="730" alt="image" src="https://github.com/user-attachments/assets/f805dbcc-54bc-4137-a3d4-229865559730" />
 
 **RESULT**
-
 The model's performance is evaluated through training and testing, and it shows potential for assisting healthcare professionals in diagnosing malaria more efficiently and accurately
